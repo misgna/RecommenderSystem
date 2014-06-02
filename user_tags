@@ -1,9 +1,9 @@
-register '/home/haile/bigData/lib/elephant-bird-core-4.1.jar';
-register '/home/haile/bigData/lib/elephant-bird-pig-4.1.jar';
-register '/home/haile/bigData/lib/elephant-bird-hadoop-compat-4.1.jar';
-register '/home/haile/bigData/lib/json-simple-1.1.jar';
-register '/home/haile/bigData/lib/google-collections-1.0.jar';
-register '/home/haile/bigData/pig-0.11.1/pig-0.11.1.jar';
+register 'elephant-bird-core-4.1.jar';
+register 'elephant-bird-pig-4.1.jar';
+register 'elephant-bird-hadoop-compat-4.1.jar';
+register 'json-simple-1.1.jar';
+register 'google-collections-1.0.jar';
+register 'pig-0.11.1/pig-0.11.1.jar';
 
 
 --Loading  data
