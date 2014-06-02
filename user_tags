@@ -1,0 +1,39 @@
+register '/home/haile/bigData/lib/elephant-bird-core-4.1.jar';
+register '/home/haile/bigData/lib/elephant-bird-pig-4.1.jar';
+register '/home/haile/bigData/lib/elephant-bird-hadoop-compat-4.1.jar';
+register '/home/haile/bigData/lib/json-simple-1.1.jar';
+register '/home/haile/bigData/lib/google-collections-1.0.jar';
+register '/home/haile/bigData/pig-0.11.1/pig-0.11.1.jar';
+
+
+--Loading  data
+--load review
+review = load 'yelp_academic_dataset_review.json' using com.twitter.elephantbird.pig.load.JsonLoader('-nestedLoad');
+
+--load business
+business = load 'yelp_academic_dataset_business.json' using com.twitter.elephantbird.pig.load.JsonLoader('-nestedLoad');
+
+--select id and text
+user_profile = FOREACH review GENERATE
+        $0#'user_id' AS user_id,
+        $0#'business_id' AS user_business_id;
+
+--business profile
+business_profile = FOREACH business GENERATE
+        $0#'business_id' AS business_id,
+        $0#'categories' AS categories;
+
+--join business and user and update user profile
+user_profile = JOIN user_profile BY user_business_id LEFT, business_profile BY business_id;
+
+--user_id, business_id, categories
+user_profile = FOREACH user_profile GENERATE user_id, business_id, categories;
+
+--group by user
+grp_user_profile = GROUP user_profile BY user_id;
+
+--changing format of the data
+data = FOREACH grp_user_profile GENERATE group AS user_id, FLATTEN(BagToTuple(user_profile.categories));
+
+--display result
+STORE data INTO 'preprocessing' USING PigStorage(':');
