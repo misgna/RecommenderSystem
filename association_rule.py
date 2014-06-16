@@ -1,5 +1,5 @@
 #!/usr/bin/python
-fList = []
+fList = {}
 # create dictionary
 def tags_frequency_dict():
 	with open('business_and_tags/fList.txt') as f:
