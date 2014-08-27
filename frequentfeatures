@@ -1,0 +1,16 @@
+{time}:  sup = 0.258
+{restaurant}:  sup = 0.166
+{order}:  sup = 0.111
+{thing}:  sup = 0.113
+{service}:  sup = 0.271
+{men}:  sup = 0.135
+{food}:  sup = 0.44
+{place}:  sup = 0.417
+{staff}:  sup = 0.101
+{price}:  sup = 0.128
+{place, time}:  sup = 0.126
+{food, restaurant}:  sup = 0.1
+{place, service}:  sup = 0.119
+{food, place}:  sup = 0.207
+{food, time}:  sup = 0.134
+{food, service}:  sup = 0.164
